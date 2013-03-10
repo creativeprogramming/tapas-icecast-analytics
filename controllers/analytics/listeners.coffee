@@ -25,3 +25,9 @@ for server in servers
               if source.Listeners > 0
                 for listener in source.listener
                   console.log "Server=#{server}, Mountpoint=#{mountpoint}, ID=#{listener.ID}, IP=#{listener.IP}, Connected=#{listener.Connected}, UserAgent=#{listener.UserAgent}"
+
+
+exports.index = (req, res) ->
+  mounts = req.query.mount?.split(',') || []
+  res.render 'listeners',
+    mounts: mounts
